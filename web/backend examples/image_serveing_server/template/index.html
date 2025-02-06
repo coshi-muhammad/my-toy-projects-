@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask Frontend</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <img id="meme" src="http://127.0.0.1:5000/images/meme-1.webp" alt="Example Image">    
+    <button onclick="updateImage()">get random meme</button>
+    <script>
+        function updateImage(){
+            let rand_num = Math.floor(Math.random()*18)+1;
+            if(rand_num == 9){
+                document.getElementById("meme").src = `http://127.0.0.1:5000/images/meme-${rand_num}.png`;
+            }else if (rand_num == 12){
+                document.getElementById("meme").src = `http://127.0.0.1:5000/images/meme-${rand_num}.jpg`;
+            }else{
+                document.getElementById("meme").src = `http://127.0.0.1:5000/images/meme-${rand_num}.webp`;
+            }
+
+        }
+    </script>
+    <style>
+        body{
+            display: flex;
+            align-items: center;
+            justify-items: center;
+        }
+        img{
+            max-width: 400px;
+            max-height: 400px;
+            margin: 10px;
+        }
+        button{
+            background: white;
+            padding: 1px;
+            border-color: black;
+            border-radius: 5px;
+        }
+    </style>
+</body>
+</html>
